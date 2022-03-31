@@ -11,7 +11,7 @@ export class WheatherUseCase {
         private geocodeRepository: GeocodeRepository,
         private wheatherRepository: WheatherRepository) { }
 
-    async getWheatherByCountry(params: LatLonRequest): Promise<CountryResponse> {
+    async getWheatherByCountry(params: LatLonRequest): Promise<WheatherResponse> {
         if (!this.isValidValue(params.countryCode)) {
             throw new HttpErrorHandler(400, 'Invalid countryCode param');
         }
@@ -28,7 +28,7 @@ export class WheatherUseCase {
     }
 
     private isValidValue(value: string | undefined): boolean {
-        return (value !== undefined && value !== null)
+        return (value !== undefined && value !== null && value != '')
     }
 
 }

@@ -1,11 +1,11 @@
 import Router from 'koa-router'
-import { healthRouteController } from './controllers/health'
+import { healthRouteController } from './controllers/health-controller'
 import { wheatherController } from './controllers/wheather-controller'
 
 export function loadRoutes(router: Router) {
   router.get('/health', healthRouteController)
 
-  router.get('/wheather-by-country-code',wheatherController)
+  router.get('/wheather-by-country-code', wheatherController)
 
   return router
 }

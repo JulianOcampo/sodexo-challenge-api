@@ -68,6 +68,5 @@ export class WheatherConsumerAdapter implements WheatherRepository {
             console.trace('getResponse trace: ', error.message)
             throw new HttpErrorHandler(400, error.message);
         }
-
     }
 }

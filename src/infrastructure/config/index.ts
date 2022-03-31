@@ -14,14 +14,15 @@ interface ConfigInfo {
 
 function loadConfig() {
   const configSchema = Joi.object<ConfigInfo>({
-    NODE_ENV: Joi.string().valid('development', 'production').required(),
+    NODE_ENV: Joi.string().required(),
     SERVER_PORT: Joi.number().required(),
     GEOCODE_URL: Joi.string().required(),
+    GEOCODE_KEY: Joi.string().required(),
+    WHEATHER_URL: Joi.string().required(),
+    WHEATHER_KEY: Joi.string().required(),
   })
 
   const { error, value } = configSchema.validate(process.env, { allowUnknown: true })
-  console.log('- Environment variables loaded...')
-
   if (error) throw error
   return { ...value } as ConfigInfo
 }

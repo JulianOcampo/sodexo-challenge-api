@@ -28,8 +28,8 @@ export function loadWebServer(options: WebServerOptions) {
   let runningServer: Server | undefined = undefined
   return {
     start: () => {
-      runningServer = app.listen(options.port, () =>
-        console.log(`- Web server started on PORT: ${options.port}`),
+      runningServer = app.listen(process.env.PORT || options.port, () =>
+        console.log(`- Web server started on PORT: ${process.env.PORT || options.port}`),
       )
     },
     close: () => {
