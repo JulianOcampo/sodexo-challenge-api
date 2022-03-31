@@ -1,6 +1,6 @@
 import { CountryResponse } from "./country-response";
 
-export class WheatherResponse extends CountryResponse {
+export class WeatherResponse extends CountryResponse {
     description: string | undefined;
     icon: string | undefined;
     temp: number | undefined;

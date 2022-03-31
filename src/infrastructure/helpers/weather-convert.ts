@@ -1,4 +1,4 @@
-export class WheatherConvert {
+export class WeatherConvert {
     static timeConverter(UNIX_timestamp: number) {
         var a = new Date(UNIX_timestamp * 1000);
         var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

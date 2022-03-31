@@ -8,8 +8,8 @@ interface ConfigInfo {
   SERVER_PORT: number
   GEOCODE_URL: string
   GEOCODE_KEY: string
-  WHEATHER_URL: string
-  WHEATHER_KEY: string
+  WEATHER_URL: string
+  WEATHER_KEY: string
 }
 
 function loadConfig() {
@@ -18,8 +18,8 @@ function loadConfig() {
     SERVER_PORT: Joi.number().required(),
     GEOCODE_URL: Joi.string().required(),
     GEOCODE_KEY: Joi.string().required(),
-    WHEATHER_URL: Joi.string().required(),
-    WHEATHER_KEY: Joi.string().required(),
+    WEATHER_URL: Joi.string().required(),
+    WEATHER_KEY: Joi.string().required(),
   })
 
   const { error, value } = configSchema.validate(process.env, { allowUnknown: true })
