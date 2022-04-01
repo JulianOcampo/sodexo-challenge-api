@@ -1,0 +1,55 @@
+name: WORKFLOW_CI 
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  publish-artifact:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '14.x'
+    - run: npm install
+    - run: npm run build
+    - run: npm run coverage
+    - name: Show variables
+      run: |
+          echo "Home: ${HOME}"
+          echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
+          echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
+          echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
+          echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+          echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+          echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+          echo "GITHUB_SHA: ${GITHUB_SHA}"
+          echo "GITHUB_REF: ${GITHUB_REF}"
+          find . -name "index.js"
+          find . -name "clover.xml"
+    - name: Get current time
+      uses: josStorer/get-current-time@v2
+      id: current-time
+      with:
+        format: YYYYMMDD-HH
+        utcOffset: "+08:00"      
+    - name: Archive build [production-page] - ${{ steps.current-time.outputs.formattedTime }}
+      if: success()
+      uses: actions/upload-artifact@v2.2.3 
+      with:
+        name: build-${{ steps.current-time.outputs.formattedTime }}
+        path: build/
+        retention-days: 30
+    - name: Archive report coverage  [production-page] - ${{ steps.current-time.outputs.formattedTime }}
+      if: success()
+      uses: actions/upload-artifact@v2.2.3 
+      with:
+        name: coverage-${{ steps.current-time.outputs.formattedTime }}
+        path: coverage/
+        retention-days: 30
+    
