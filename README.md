@@ -20,7 +20,7 @@ WEATHER_KEY=******
 WEATHER_URL=https://api.openweathermap.org/data/2.5/onecall
 ```
 
-## Run Locally Via Docker
+## Run Locally 
 
 >Clone the project
 
