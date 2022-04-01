@@ -66,10 +66,14 @@ remember to run **npm install** first
 
 >In the github actions section you can find the execution of build tasks and unit tests that when you download it you can show the artifact and the result of the coverage in the code.
 
-https://github.com/JulianOcampo/sodexo-challenge-api/actions
+https://github.com/JulianOcampo/sodexo-challenge-api/actions/runs/2075235834
 
 
 ## Images
+
+>BluePrint
+
+![Page](/deployment/assets/blueprint.png)
 
 >Coverage result
 
